@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forseason/model/user_model.dart';
+import 'package:forseason/model/login_user_model.dart';
 
 class ProfilImage extends StatelessWidget {
   const ProfilImage({
@@ -7,7 +7,7 @@ class ProfilImage extends StatelessWidget {
     required this.user,
   }) : super(key: key);
 
-  final User user;
+  final LoginUser user;
 
   @override
   Widget build(BuildContext context) {

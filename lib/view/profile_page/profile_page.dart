@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forseason/model/user_model.dart';
+import 'package:forseason/model/login_user_model.dart';
 import 'package:forseason/view/drawer/my_drawer.dart';
 import 'package:forseason/view/profile_page/profile_card.dart';
 import 'package:forseason/view/profile_page/profile_image.dart';
@@ -10,13 +10,12 @@ import 'package:provider/provider.dart';
 class MyProfilePge extends StatelessWidget {
   MyProfilePge(this.user);
 
-  final User user;
+  final LoginUser user;
 
   @override
   Widget build(BuildContext context) {
-  final documents = context.read<DocumentViewModel>().repository.getAll();
+  final documents = context.read<DocumentViewModel>().docList;
     return Scaffold(
-      drawer: MyDrawer(),
       appBar: AppBar(
         centerTitle: true,
         title: Text(

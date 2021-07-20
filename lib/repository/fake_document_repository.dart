@@ -11,28 +11,28 @@ class FakeDocumentRepository extends Repository<Document> {
   }
 
   @override
-  List<Document> getAll() {
+  Future<List<Document>> getAll() async {
     return documents;
   }
 
   final List<Document> documents = [
-    Document(FakeUserRepository().getUser(), FakeDocumentInputRepository().getAll(),
+    Document(FakeUserRepository().user, FakeDocumentInputRepository().input,
         false, TimeOfDay.minutesPerHour, 123, 123),
-    Document(FakeUserRepository().getUser(), FakeDocumentInputRepository().getAll(),
+    Document(FakeUserRepository().user, FakeDocumentInputRepository().input,
         false, TimeOfDay.minutesPerHour, 123, 123),
-    Document(FakeUserRepository().getUser(), FakeDocumentInputRepository().getAll(),
+    Document(FakeUserRepository().user, FakeDocumentInputRepository().input,
         false, TimeOfDay.minutesPerHour, 123, 123),
-    Document(FakeUserRepository().getUser(), FakeDocumentInputRepository().getAll(),
+    Document(FakeUserRepository().user, FakeDocumentInputRepository().input,
         false, TimeOfDay.minutesPerHour, 123, 123),
-    Document(FakeUserRepository().getUser(), FakeDocumentInputRepository().getAll(),
+    Document(FakeUserRepository().user, FakeDocumentInputRepository().input,
         false, TimeOfDay.minutesPerHour, 123, 123),
-    Document(FakeUserRepository().getUser(), FakeDocumentInputRepository().getAll(),
+    Document(FakeUserRepository().user, FakeDocumentInputRepository().input,
         false, TimeOfDay.minutesPerHour, 123, 123),
-    Document(FakeUserRepository().getUser(), FakeDocumentInputRepository().getAll(),
+    Document(FakeUserRepository().user, FakeDocumentInputRepository().input,
         false, TimeOfDay.minutesPerHour, 123, 123),
-    Document(FakeUserRepository().getUser(), FakeDocumentInputRepository().getAll(),
+    Document(FakeUserRepository().user, FakeDocumentInputRepository().input,
         false, TimeOfDay.minutesPerHour, 123, 123),
-    Document(FakeUserRepository().getUser(), FakeDocumentInputRepository().getAll(),
+    Document(FakeUserRepository().user, FakeDocumentInputRepository().input,
         false, TimeOfDay.minutesPerHour, 123, 123),
   ];
 }

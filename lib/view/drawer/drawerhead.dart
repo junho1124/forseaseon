@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:forseason/model/user_model.dart';
+import 'package:forseason/model/login_user_model.dart';
 
 class MyDrawerHeader extends StatelessWidget {
   const MyDrawerHeader({
@@ -9,7 +9,7 @@ class MyDrawerHeader extends StatelessWidget {
     required this.user,
   }) : super(key: key);
 
-  final User user;
+  final LoginUser user;
 
   @override
   Widget build(BuildContext context) {

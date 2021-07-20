@@ -1,9 +1,9 @@
 
 import 'document_input_model.dart';
-import 'user_model.dart';
+import 'login_user_model.dart';
 
 class Document {
-  User? user;
+  LoginUser? user;
   List<DocumentInput>? documentInput;
   bool? bookmark;
   int? dateTime;
@@ -19,13 +19,8 @@ class Document {
     this.visitorCount);
 
   Document.fromJson(dynamic json) {
-    user = json["user"] != null ? User.fromJson(json["user"]) : null;
-    if (json["documentInput"] != null) {
-      documentInput = [];
-      json["documentInput"].forEach((v) {
-        documentInput!.add(DocumentInput.fromJson(v));
-      });
-    }
+    user = json["user"];
+    documentInput = json["documentInput"];
     bookmark = json["bookmark"];
     dateTime = json["dateTime"];
     favoriteCount = json["favoriteCount"];
@@ -34,12 +29,8 @@ class Document {
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
-    if (user != null) {
-      map["user"] = user!.toJson();
-    }
-    if (documentInput != null) {
-      map["documentInput"] = documentInput!.map((v) => v.toJson()).toList();
-    }
+    map["user"] = user;
+    map["documentInput"] = documentInput;
     map["bookmark"] = bookmark;
     map["dateTime"] = dateTime;
     map["favoriteCount"] = favoriteCount;

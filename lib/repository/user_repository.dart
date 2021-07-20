@@ -1,9 +1,12 @@
-import 'package:forseason/model/user_model.dart';
+import 'package:forseason/model/login_user_model.dart';
 
 abstract class UserRepository {
+
+  LoginUser? user;
+
   void login();
 
   void logout();
 
-  User getUser();
+  // Stream<LoginUser> authStateChanges();
 }

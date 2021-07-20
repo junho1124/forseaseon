@@ -32,7 +32,7 @@ class MainPageResent extends StatelessWidget {
             crossAxisSpacing: 10,
             mainAxisSpacing: 5,
           ),
-          itemCount: 10,
+          itemCount: documents.length,
           itemBuilder: (BuildContext context, int index) {
             return ResentCards(documents[index]);
           },

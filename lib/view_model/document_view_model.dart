@@ -8,11 +8,10 @@ class DocumentViewModel extends ChangeNotifier {
 
   final Repository<Document> repository;
 
-  List<Document> makeDocument() {
-    return repository.getAll();
+  List<Document> docList = [];
+
+  Future<void> fetch() async {
+    docList = await repository.getAll();
   }
-
-
-
 
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forseason/model/user_model.dart';
+import 'package:forseason/model/login_user_model.dart';
 import 'package:forseason/view/drawer/my_drawer.dart';
 
 import 'community_tab.dart';
@@ -7,7 +7,7 @@ import 'community_tab.dart';
 class MyDocumentPage extends StatelessWidget {
   MyDocumentPage(this.user);
 
-  final User user;
+  final LoginUser user;
 
   @override
   Widget build(BuildContext context) {

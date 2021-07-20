@@ -1,4 +1,5 @@
 import 'package:forseason/model/document_input_model.dart';
+import 'package:forseason/model/document_model.dart';
 import 'package:forseason/repository/repository.dart';
 
 class FakeDocumentInputRepository extends Repository<DocumentInput> {
@@ -10,12 +11,16 @@ class FakeDocumentInputRepository extends Repository<DocumentInput> {
 
 
   @override
-  void add(DocumentInput item) {
-    // TODO: implement add
+  Future add(DocumentInput item) async {
+    await Future.delayed(Duration(milliseconds: 10));
+
+    input.add(DocumentInput(item.type, item.text));
   }
 
   @override
-  List<DocumentInput> getAll() {
+  Future<List<DocumentInput>> getAll() async {
+    await Future.delayed(Duration(seconds: 1));
+
     return input;
   }
 

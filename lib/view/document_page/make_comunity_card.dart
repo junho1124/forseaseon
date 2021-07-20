@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:forseason/model/document_model.dart';
-import 'package:forseason/model/user_model.dart';
+import 'package:forseason/model/login_user_model.dart';
 import 'package:forseason/view/document_page/community_detail.dart';
 
-InkWell makeCommunityItem(User user, BuildContext context, Document document) {
+InkWell makeCommunityItem(LoginUser user, BuildContext context, Document document) {
   return InkWell(
     onTap: () {
       Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => CommunityDetailPage(document)));

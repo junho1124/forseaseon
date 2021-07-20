@@ -34,17 +34,16 @@ class _ResentCardsState extends State<ResentCards> {
             SizedBox(
               height: 4.0,
             ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    widget.document.documentInput![0].text!,
-                    style: TextStyle(),
-                  ),
-                ],
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  widget.document.documentInput![0].text!,
+                  style: TextStyle(),
+                ),
+              ],
             ),
+            Expanded(child: SizedBox()),
             Text(widget.document.user!.name!),
             MakeStarRating(),
           ],

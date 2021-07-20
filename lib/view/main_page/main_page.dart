@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:forseason/repository/fake_document_input_repository.dart';
-import 'package:forseason/repository/fake_document_repository.dart';
+import 'package:forseason/model/login_user_model.dart';
 import 'package:forseason/repository/fake_user_repository.dart';
+import 'package:forseason/view/document_input_page/document_input_page.dart';
 import 'package:forseason/view/drawer/my_drawer.dart';
 import 'package:forseason/view_model/document_view_model.dart';
 import 'package:provider/provider.dart';
@@ -19,13 +19,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 
-  @override
-  void initState() {
-    super.initState();
-    FakeDocumentRepository().getAll();
-    FakeDocumentInputRepository().getAll();
-    FakeUserRepository().getUser();
-  }
+
 
   final _dropList = ['spring', 'summer', 'autumn', 'winter'];
 
@@ -34,13 +28,16 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-    final documents = context.read<DocumentViewModel>().repository.getAll();
+    final documents = context.read<DocumentViewModel>().docList;
+    LoginUser _user = FakeUserRepository().user!;
 
     return Scaffold(
       drawer: MyDrawer(),
       appBar: buildAppBar(context),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (_) => CreatePage(_user)));
+        },
         child: Icon(
           Icons.add,
           color: Colors.black,
