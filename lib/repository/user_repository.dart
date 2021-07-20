@@ -1,4 +1,5 @@
 import 'package:forseason/model/login_user_model.dart';
+import 'package:forseason/model/result.dart';
 
 abstract class UserRepository {
 
@@ -8,5 +9,5 @@ abstract class UserRepository {
 
   void logout();
 
-  // Stream<LoginUser> authStateChanges();
+  Stream<Result<LoginUser>> authStateChanges();
 }

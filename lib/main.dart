@@ -8,8 +8,6 @@ import 'package:forseason/view/main_page/main_page.dart';
 import 'package:forseason/view_model/document_input_view_model.dart';
 import 'package:forseason/view_model/provider.dart';
 import 'package:forseason/view_model/document_view_model.dart';
-import 'package:forseason/view_model/user_view_medel.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 
 
@@ -20,9 +18,8 @@ void main() {
   runApp(
     MultiProvider(providers: [
     ChangeNotifierProvider.value(value: MyProvider()),
-    ChangeNotifierProvider.value(value: LoginViewModel()),
+    ChangeNotifierProvider.value(value: LoginViewModel(userRepository)),
     ChangeNotifierProvider.value(value: DocumentViewModel(docRepository)),
-    ChangeNotifierProvider.value(value: UserViewModel(userRepository)),
     ChangeNotifierProvider.value(value: DocumentInputViewModel(inputRepository)),
   ],
     child: MyApp(),),
@@ -40,16 +37,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    super.initState();
-    final login = context.read<LoginViewModel>();
     context.read<DocumentInputViewModel>().fetch();
     context.read<DocumentViewModel>().fetch();
-    login.googleSignIn.onCurrentUserChanged.listen((GoogleSignInAccount? account) {
-      setState(() {
-        login.user = account;
-      });
-    });
-    login.googleSignIn.signInSilently();
     super.initState();
   }
 
@@ -75,7 +64,7 @@ class _MyAppState extends State<MyApp> {
                 ElevatedButton(
                   child: const Text('SIGN IN'),
                   onPressed: () {
-                    context.read<LoginViewModel>().handleSignIn();
+                    context.read<LoginViewModel>().login();
                   },
                 ),
               ],

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:forseason/model/login_user_model.dart';
+import 'package:forseason/model/result.dart';
 import 'package:forseason/repository/user_repository.dart';
 
 class FakeUserRepository extends UserRepository {
@@ -22,14 +23,14 @@ class FakeUserRepository extends UserRepository {
     _streamController.add(null);
   }
 
-  // @override
-  // Stream<LoginUser> authStateChanges() {
-  //   return _streamController.stream.map((LoginUser? user) {
-  //     if (user != null) {
-  //       return user;
-  //     }
-  //     return ;
-  //   });
-  // }
+  @override
+  Stream<Result<LoginUser>> authStateChanges() {
+    return _streamController.stream.map((LoginUser? user) {
+      if (user != null) {
+        return Result.success(user);
+      }
+      return Result.error(Exception('로그인 오류'));
+    });
+  }
 
 }

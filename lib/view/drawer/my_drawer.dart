@@ -4,7 +4,6 @@ import 'package:forseason/view_model/provider.dart';
 import 'package:forseason/view/document_page/document_page.dart';
 import 'package:forseason/view/main_page/main_page.dart';
 import 'package:forseason/view/profile_page/profile_page.dart';
-import 'package:forseason/view_model/user_view_medel.dart';
 import 'package:provider/provider.dart';
 import '../../main.dart';
 import 'drawerhead.dart';
@@ -18,7 +17,7 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
-    final user = context.read<UserViewModel>().repository.user!;
+    final user = context.read<LoginViewModel>().repository.user!;
     final myProvider = context.watch<MyProvider>();
 
     return Drawer(
@@ -37,7 +36,7 @@ class _MyDrawerState extends State<MyDrawer> {
             ),
             SizedBox(),
             IconButton(onPressed: () {
-              context.read<LoginViewModel>().handleSignOut();
+              context.read<LoginViewModel>().logout();
               Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => MyApp()));
             } , icon: Icon(Icons.logout))
           ],

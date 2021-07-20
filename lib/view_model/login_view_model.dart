@@ -1,22 +1,32 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:forseason/model/login_user_model.dart';
+import 'package:forseason/model/result.dart';
+import 'package:forseason/repository/user_repository.dart';
 
 class LoginViewModel extends ChangeNotifier {
-  GoogleSignIn _googleSignIn = GoogleSignIn();
+  UserRepository repository;
 
-  GoogleSignInAccount? user;
+  LoginUser? user;
 
-  Future<void> handleSignIn() async {
-    try {
-      await _googleSignIn.signIn();
-    } catch (error) {
-      print(error);
-    }
+  LoginViewModel(this.repository) {
+    repository.authStateChanges().listen((Result<LoginUser> result) {
+      if (result is Success<LoginUser>) {
+        user = result.data;
+      } else if (result is Error<LoginUser>) {
+        user = null;
+        print(result.e);
+      }
+      notifyListeners();
+    });
+
   }
 
-  Future<void> handleSignOut() => _googleSignIn.disconnect();
+  void login() {
+    repository.login();
+  }
 
-  GoogleSignIn get googleSignIn => _googleSignIn;
+  void logout() {
+    repository.logout();
+  }
 
 }
