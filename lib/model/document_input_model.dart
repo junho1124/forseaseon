@@ -5,6 +5,4 @@ class DocumentInput {
   DocumentInput(
     this.type,
     this.text);
-
-
 }

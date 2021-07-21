@@ -1,11 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:forseason/view_model/login_view_model.dart';
-import 'package:forseason/repository/fake_document_input_repository.dart';
-import 'package:forseason/repository/fake_document_repository.dart';
-import 'package:forseason/repository/fake_user_repository.dart';
+import 'package:forseason/repository/fake_repository/fake_document_repository.dart';
+import 'package:forseason/repository/fake_repository/fake_user_repository.dart';
 import 'package:forseason/view/main_page/main_page.dart';
-import 'package:forseason/view_model/document_input_view_model.dart';
 import 'package:forseason/view_model/provider.dart';
 import 'package:forseason/view_model/document_view_model.dart';
 import 'package:provider/provider.dart';
@@ -14,13 +12,12 @@ import 'package:provider/provider.dart';
 void main() {
   final docRepository = FakeDocumentRepository();
   final userRepository = FakeUserRepository();
-  final inputRepository = FakeDocumentInputRepository();
+  // final firestoreRepository = FirestoreDocumentRepository();
   runApp(
     MultiProvider(providers: [
     ChangeNotifierProvider.value(value: MyProvider()),
     ChangeNotifierProvider.value(value: LoginViewModel(userRepository)),
-    ChangeNotifierProvider.value(value: DocumentViewModel(docRepository)),
-    ChangeNotifierProvider.value(value: DocumentInputViewModel(inputRepository)),
+    ChangeNotifierProvider.value(value: DocumentViewModel(docRepository))
   ],
     child: MyApp(),),
   );
@@ -37,7 +34,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    context.read<DocumentInputViewModel>().fetch();
     context.read<DocumentViewModel>().fetch();
     super.initState();
   }

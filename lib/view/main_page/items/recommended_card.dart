@@ -30,14 +30,14 @@ class _RecommendedCardState extends State<RecommendedCard> {
             Container(
               width: 200,
               child: Image.network(
-                document.documentInput![2].text!,
+                document.documentInput![2].text,
                 fit: BoxFit.cover,
               ),
             ),
             SizedBox(
               height: 4,
             ),
-            Text(document.documentInput![0].text!),
+            Text(document.documentInput![0].text),
             Expanded(child: Container()),
             Text(
               'Forseason Tip',

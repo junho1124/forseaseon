@@ -65,8 +65,13 @@ class _MyDrawerState extends State<MyDrawer> {
       onTap: () {
         setState(() {
           myProvider.select(index);
-          Navigator.pop(context);
-          Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => page!));
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (BuildContext context) => page!,
+            ),
+                (route) => false,
+          );
         });
       },
     );

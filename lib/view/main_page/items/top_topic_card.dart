@@ -28,7 +28,7 @@ class _TopTopicCardState extends State<TopTopicCard> {
           children: [
             Container(
               height: 80,
-              child: Image.network(widget.document.documentInput![2].text!,
+              child: Image.network(widget.document.documentInput![2].text,
                   fit: BoxFit.cover),
             ),
             SizedBox(height: 4.0,),
@@ -36,12 +36,12 @@ class _TopTopicCardState extends State<TopTopicCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  widget.document.documentInput![0].text!,
+                  widget.document.documentInput![0].text,
                   style: TextStyle(),
                 ),
               ],
             ),),
-            Text(widget.document.user!.name!),
+            Text(widget.document.user!.name),
             MakeStarRating(),
           ],
         ),

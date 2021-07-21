@@ -19,7 +19,7 @@ class ProfileMyInfo extends StatelessWidget {
         ),
         Center(
             child: Text(
-          user.name!,
+          user.name,
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         )),
         SizedBox(
@@ -43,7 +43,7 @@ class ProfileMyInfo extends StatelessWidget {
             Expanded(
                 flex: 7,
                 child: Text(
-                  user.name!,
+                  user.name,
                   style: TextStyle(fontSize: 11),
                 )),
           ],
@@ -62,7 +62,7 @@ class ProfileMyInfo extends StatelessWidget {
             Expanded(
                 flex: 7,
                 child: Text(
-                  user.email!,
+                  user.email,
                   style: TextStyle(fontSize: 11),
                 )),
           ],
@@ -81,7 +81,7 @@ class ProfileMyInfo extends StatelessWidget {
             Expanded(
                 flex: 7,
                 child: Text(
-                  user.comment!,
+                  user.comment,
                   style: TextStyle(fontSize: 11),
                 )),
           ],

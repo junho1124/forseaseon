@@ -28,7 +28,7 @@ class _ResentCardsState extends State<ResentCards> {
           children: [
             Container(
               height: 120,
-              child: Image.network(widget.document.documentInput![2].text!,
+              child: Image.network(widget.document.documentInput![2].text,
                   fit: BoxFit.cover),
             ),
             SizedBox(
@@ -38,13 +38,13 @@ class _ResentCardsState extends State<ResentCards> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  widget.document.documentInput![0].text!,
+                  widget.document.documentInput![0].text,
                   style: TextStyle(),
                 ),
               ],
             ),
             Expanded(child: SizedBox()),
-            Text(widget.document.user!.name!),
+            Text(widget.document.user!.name),
             MakeStarRating(),
           ],
         ),

@@ -3,7 +3,7 @@ import 'package:forseason/model/document_model.dart';
 import 'package:forseason/repository/repository.dart';
 
 
-class FirebaseDocumentRepository extends Repository<Document> {
+class FirestoreDocumentRepository extends Repository<Document> {
 
 final docRef = FirebaseFirestore
     .instance

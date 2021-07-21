@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:forseason/model/login_user_model.dart';
-import 'package:forseason/repository/fake_user_repository.dart';
+import 'package:forseason/repository/fake_repository/fake_user_repository.dart';
 import 'package:forseason/view/document_input_page/document_input_page.dart';
 import 'package:forseason/view/drawer/my_drawer.dart';
 import 'package:forseason/view_model/document_view_model.dart';
