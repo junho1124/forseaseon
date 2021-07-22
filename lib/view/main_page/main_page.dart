@@ -19,7 +19,11 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 
-
+@override
+  void initState() {
+  context.read<DocumentViewModel>().fetch();
+  super.initState();
+  }
 
   final _dropList = ['spring', 'summer', 'autumn', 'winter'];
 

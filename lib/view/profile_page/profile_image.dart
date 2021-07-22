@@ -20,7 +20,7 @@ class ProfilImage extends StatelessWidget {
                   height: 200,
                   width: 200,
                   child: Image.network(
-                    user.profileUrl,
+                    user.profileUrl!,
                     fit: BoxFit.cover,
                   ))),
         ),

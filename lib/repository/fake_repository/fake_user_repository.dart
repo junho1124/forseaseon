@@ -8,8 +8,7 @@ class FakeUserRepository extends UserRepository {
   LoginUser? user = LoginUser(
         '최준호',
         'wnsghqwe@naver.com',
-        'https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/09/27/08/jennifer-lawrence.jpg',
-        '안녕하세요'
+        'https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/09/27/08/jennifer-lawrence.jpg'
   );
 
 

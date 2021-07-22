@@ -17,7 +17,7 @@ class MyDrawer extends StatefulWidget {
 class _MyDrawerState extends State<MyDrawer> {
   @override
   Widget build(BuildContext context) {
-    final user = context.read<LoginViewModel>().repository.user!;
+    final user = context.read<LoginViewModel>().user!;
     final myProvider = context.watch<MyProvider>();
 
     return Drawer(

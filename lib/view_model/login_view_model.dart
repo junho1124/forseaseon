@@ -8,7 +8,8 @@ class LoginViewModel extends ChangeNotifier {
 
   LoginUser? user;
 
-  LoginViewModel(this.repository) {
+  LoginViewModel(this.repository)
+  {
     repository.authStateChanges().listen((Result<LoginUser> result) {
       if (result is Success<LoginUser>) {
         user = result.data;
@@ -20,6 +21,7 @@ class LoginViewModel extends ChangeNotifier {
     });
 
   }
+
 
   void login() {
     repository.login();

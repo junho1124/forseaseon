@@ -37,10 +37,12 @@ class _CreatePageState extends State<CreatePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.send),
-            onPressed: () async {
-              viewModel.uploadDocument(widget.user, await viewModel.makeInput(
-                  textEditingController.text));
+            onPressed: () {
+              viewModel.uploadDocument(widget.user,
+                  textEditingController.text);
+              setState(() {
               Navigator.pop(context);
+              });
             },
           )
         ],

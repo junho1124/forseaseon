@@ -41,7 +41,7 @@ class _TopTopicCardState extends State<TopTopicCard> {
                 ),
               ],
             ),),
-            Text(widget.document.user!.name),
+            Text(widget.document.user!.name!),
             MakeStarRating(),
           ],
         ),

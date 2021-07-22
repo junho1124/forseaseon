@@ -44,7 +44,7 @@ class _ResentCardsState extends State<ResentCards> {
               ],
             ),
             Expanded(child: SizedBox()),
-            Text(widget.document.user!.name),
+            Text(widget.document.user!.name!),
             MakeStarRating(),
           ],
         ),

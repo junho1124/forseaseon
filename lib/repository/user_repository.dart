@@ -3,8 +3,6 @@ import 'package:forseason/model/result.dart';
 
 abstract class UserRepository {
 
-  LoginUser? user;
-
   void login();
 
   void logout();

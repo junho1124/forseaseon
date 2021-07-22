@@ -1,26 +1,19 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:forseason/provider_page.dart';
+import 'package:forseason/repository/firebase_repository/firebase_user_repository.dart';
 import 'package:forseason/view_model/login_view_model.dart';
 import 'package:forseason/repository/fake_repository/fake_document_repository.dart';
-import 'package:forseason/repository/fake_repository/fake_user_repository.dart';
 import 'package:forseason/view/main_page/main_page.dart';
 import 'package:forseason/view_model/provider.dart';
 import 'package:forseason/view_model/document_view_model.dart';
 import 'package:provider/provider.dart';
 
-
 void main() {
-  final docRepository = FakeDocumentRepository();
-  final userRepository = FakeUserRepository();
-  // final firestoreRepository = FirestoreDocumentRepository();
-  runApp(
-    MultiProvider(providers: [
-    ChangeNotifierProvider.value(value: MyProvider()),
-    ChangeNotifierProvider.value(value: LoginViewModel(userRepository)),
-    ChangeNotifierProvider.value(value: DocumentViewModel(docRepository))
-  ],
-    child: MyApp(),),
-  );
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -29,44 +22,55 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  bool _initialized = false;
+  bool _error = false;
 
-
-
-  @override
-  void initState() {
-    context.read<DocumentViewModel>().fetch();
-    super.initState();
+  void initializeFlutterFire() async {
+    try {
+      await Firebase.initializeApp();
+      setState(() {
+        _initialized = true;
+      });
+    } catch (e) {
+      setState(() {
+        _error = true;
+      });
+    }
   }
 
   @override
+  void initState() {
+    initializeFlutterFire();
+    super.initState();
+  }
+
+  final fakeDocRepository = FakeDocumentRepository();
+  final firebaseUserRepository = FirebaseUserRepository();
+
+  // final fakeUserRepository = FakeUserRepository();
+  // final firestoreRepository = FirestoreDocumentRepository();
+  @override
   Widget build(BuildContext context) {
+    if (_error) {
+      return ErrorWidget('exception');
+    }
+    if (!_initialized) {
+      return CircularProgressIndicator();
+    }
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'for : season',
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(color: Color(0xFFF4DCDB)),
-        focusColor: Color(0xFFF3C0C0),
-        selectedRowColor: Color(0xFFF3C0C0),
-      ),
-      home: context.watch<LoginViewModel>().user == null ? Scaffold(
-        appBar: AppBar(
-          title: const Text('Google Sign In'),
+        debugShowCheckedModeBanner: false,
+        title: 'for : season',
+        theme: ThemeData(
+          appBarTheme: AppBarTheme(color: Color(0xFFF4DCDB)),
+          focusColor: Color(0xFFF3C0C0),
+          selectedRowColor: Color(0xFFF3C0C0),
         ),
-        body: ConstrainedBox(
-            constraints: const BoxConstraints.expand(),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                ElevatedButton(
-                  child: const Text('SIGN IN'),
-                  onPressed: () {
-                    context.read<LoginViewModel>().login();
-                  },
-                ),
-              ],
-            )
-        )
-    ) : MainPage()
-    );
+        home: MultiProvider(providers: [
+          ChangeNotifierProvider.value(value: MyProvider()),
+          ChangeNotifierProvider.value(
+              value: LoginViewModel(firebaseUserRepository)),
+          ChangeNotifierProvider.value(
+              value: DocumentViewModel(fakeDocRepository))
+        ], child: ProviderPage()));
   }
 }

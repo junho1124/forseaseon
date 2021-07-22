@@ -29,7 +29,7 @@ InkWell makeCommunityItem(LoginUser user, BuildContext context, Document documen
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: CircleAvatar(
-              backgroundImage: NetworkImage(user.profileUrl),
+              backgroundImage: NetworkImage(user.profileUrl!),
             ),
           ),
           Column(

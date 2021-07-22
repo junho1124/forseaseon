@@ -1,14 +1,12 @@
 class LoginUser {
-  String name;
-  String email;
-  String profileUrl;
-  String comment;
+  String? name;
+  String? email;
+  String? profileUrl;
 
   LoginUser(
     this.name,
     this.email,
-    this.profileUrl,
-    this.comment);
+    this.profileUrl);
 
 
 

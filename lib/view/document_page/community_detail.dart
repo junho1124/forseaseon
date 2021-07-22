@@ -31,7 +31,7 @@ class CommunityDetailPage extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  CircleAvatar(backgroundImage: NetworkImage(document.user!.profileUrl),),
+                  CircleAvatar(backgroundImage: NetworkImage(document.user!.profileUrl!),),
                   SizedBox(width: 16,),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +43,7 @@ class CommunityDetailPage extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text(document.user!.name, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500), textAlign: TextAlign.end,),
+                          Text(document.user!.name!, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500), textAlign: TextAlign.end,),
                           SizedBox(width: 4,),
                           Text('시간', style: TextStyle(fontSize: 8), textAlign: TextAlign.center,),
                           SizedBox(width: 4,),
